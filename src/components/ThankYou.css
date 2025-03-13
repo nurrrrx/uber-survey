@@ -1,0 +1,30 @@
+.thank-you {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  
+  .thank-you h2 {
+    color: #276EF1;
+    margin-bottom: 20px;
+  }
+  
+  .thank-you p {
+    margin-bottom: 15px;
+  }
+  
+  .start-over {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #276EF1;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .start-over:hover {
+    background-color: #1a4fc4;
+  }

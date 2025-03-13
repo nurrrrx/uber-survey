@@ -1,0 +1,210 @@
+.survey-carousel {
+  max-width: 600px;
+  margin: 5px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  overflow: hidden; /* Prevent content from overflowing */
+}
+
+.intro-text {
+  margin-bottom: 15px;
+  text-align: left;
+  color: #333;
+  line-height: 1.4;
+}
+
+.intro-text p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.progress-bar {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background-color: #276EF1;
+  transition: width 0.3s ease;
+}
+
+.question-container {
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.question {
+  flex-grow: 1;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.survey-input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 10px;
+  box-sizing: border-box; /* Include padding in width calculation */
+  max-width: 100%; /* Ensure it doesn't exceed parent width */
+  overflow: hidden; /* Hide overflowing text */
+  text-overflow: ellipsis; /* Add ellipsis for overflow */
+}
+
+/* Phone input styling */
+.phone-input-container {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.phone-prefix {
+  background-color: #f0f0f0;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 16px;
+  color: #333;
+  white-space: nowrap;
+}
+
+.phone-input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 0 4px 4px 0;
+  box-sizing: border-box;
+  max-width: calc(100% - 60px); /* Account for prefix width */
+}
+
+.input-error {
+  color: #e53935;
+  font-size: 12px;
+  margin-top: 5px;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+}
+
+.error-message {
+  color: #e53935;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #ffebee;
+  border-radius: 4px;
+  border-left: 3px solid #e53935;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.radio-options {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.radio-option {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.radio-option input {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.radio-option label {
+  word-break: break-word;
+}
+
+.checkbox-options {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.checkbox-option {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #eee;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.checkbox-option:hover {
+  background-color: #f9f9f9;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0; /* Allow container to shrink */
+}
+
+.checkbox-container input {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.checkbox-container label {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.car-image {
+  width: 100px;
+  height: 60px;
+  margin-left: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.car-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.next-button {
+  padding: 12px 24px;
+  background-color: #276EF1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.next-button:hover {
+  background-color: #1a4fc4;
+}
+
+.next-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
