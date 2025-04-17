@@ -10,13 +10,15 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// PostgreSQL connection - Modified to disable SSL for local development
+// Check if we're in production (on Render)
+const isProduction = process.env.DATABASE_URL.includes('dpg-');
+
+// PostgreSQL connection - Configure SSL based on environment
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: false // Disable SSL for local development
+  ssl: isProduction ? { rejectUnauthorized: false } : false
 });
 
-// Comment out from here in the event 1 record with all information
 // Create table for ubersurvey if not exists
 const createTableQuery = `
 CREATE TABLE IF NOT EXISTS survey_responses_compiled (
@@ -38,9 +40,6 @@ CREATE TABLE IF NOT EXISTS survey_responses_compiled (
 pool.query(createTableQuery)
   .then(() => console.log('Survey responses table created or exists already'))
   .catch(err => console.error('Error creating table', err));
-
-// Modified schema to allow NULL values for fields except session_id
-// This allows us to create an initial record with just the session_id
 
 // API endpoint to create initial record with just session ID
 app.post('/api/create-record', async (req, res) => {
@@ -155,6 +154,28 @@ app.put('/api/update-record', async (req, res) => {
   }
 });
 
+// API endpoint to check database connection
+app.get('/api/db-status', async (req, res) => {
+  try {
+    // Simple query to check database connection
+    const result = await pool.query('SELECT NOW() as current_time');
+    
+    res.status(200).json({
+      success: true,
+      message: 'Database connection successful',
+      timestamp: result.rows[0].current_time,
+      environment: isProduction ? 'production' : 'development'
+    });
+  } catch (error) {
+    console.error('Database connection error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Database connection error',
+      error: error.message
+    });
+  }
+});
+
 // Test endpoint to verify server is working
 app.get('/api/test', (req, res) => {
   res.status(200).json({ message: 'Backend server is working' });
@@ -163,4 +184,5 @@ app.get('/api/test', (req, res) => {
 // Start server
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
+  console.log(`Environment: ${isProduction ? 'Production' : 'Development'}`);
 });
