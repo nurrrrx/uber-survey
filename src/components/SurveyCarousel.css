@@ -183,28 +183,170 @@
   object-fit: cover;
 }
 
+.language-toggle {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.language-button {
+  background: none;
+  border: none;
+  color: #0066cc;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+}
+
+.language-button:hover {
+  color: #004499;
+}
+
+/* RTL Support */
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Phone input container RTL */
+.phone-input-container.rtl {
+  flex-direction: row-reverse;
+}
+
+/* Radio and checkbox options RTL */
+.radio-option.rtl,
+.checkbox-container.rtl {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.radio-option.rtl input[type="radio"],
+.checkbox-container.rtl input[type="checkbox"] {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+.rtl-label {
+  margin-right: 8px;
+  margin-left: 0;
+}
+
+
+/* Checkbox options RTL layout */
+.checkbox-option.rtl .checkbox-container {
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.checkbox-option.rtl input[type="checkbox"] {
+  margin-left: 0;
+  margin-right: 10px; /* Space between text and checkbox */
+}
+
+/* General RTL adjustments */
+.survey-carousel.rtl {
+  text-align: right;
+}
+
+.survey-carousel.rtl .question-container h2,
+.survey-carousel.rtl .question h3 {
+  text-align: right;
+}
+
+/* Input fields */
+.survey-carousel.rtl input[type="text"],
+.survey-carousel.rtl input[type="checkbox"],
+.survey-carousel.rtl input[type="radio"] {
+  margin-left: 8px;
+  margin-right: 0;
+}
+
+/* Error messages */
+.survey-carousel.rtl .error-message {
+  text-align: right;
+}
+
 .navigation {
   display: flex;
   justify-content: center;
   margin-top: 20px;
 }
 
-.next-button {
-  padding: 12px 24px;
-  background-color: #276EF1;
+.button-container {
+  display: flex;
+  gap: 30px; /* This creates space between the buttons */
+  width: 100%;
+  max-width: 400px; /* Adjust based on your design */
+  justify-content: center;
+}
+
+.rtl-navigation .button-container {
+  flex-direction: row-reverse;
+}
+
+.back-button, .next-button, .submit-button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  min-width: 120px; /* Makes buttons the same width */
+  text-align: center;
+}
+
+.back-button {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+}
+
+.back-button:hover {
+  background-color: #e0e0e0;
+}
+
+.next-button, .submit-button {
+  background-color: #0066cc;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.next-button:hover {
-  background-color: #1a4fc4;
+.next-button:hover, .submit-button:hover {
+  background-color: #0055aa;
 }
 
-.next-button:disabled {
-  background-color: #cccccc;
+.submit-button:disabled {
+  background-color: #aaaaaa;
   cursor: not-allowed;
+}
+
+/* Name field styles */
+.name-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+}
+
+.name-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.name-field label {
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+/* For desktop or larger screens, place fields side by side */
+@media (min-width: 768px) {
+  .name-fields {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .name-field {
+    width: 48%; /* Slightly less than 50% to account for gap */
+  }
 }
